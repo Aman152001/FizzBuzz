@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Aman Yadav</title>
+    <title>Fizz BUzz: A Coding Project by Aman Yadav</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
 <!-- ==== Nav Section ==== -->
 <nav class="navbar navbar-expand-md navbar-light  fixed-top ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">APP NAME</a>
+        <a class="navbar-brand" href="#">Fizz Buzz</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,20 +52,118 @@
 <!-- ==== Main Section ==== -->
 <main class="flex-shrink-0">
     <div class="container py-4 px-4 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Coder For: App Name</h2>
+        <h2 class="border-1 border-bottom border-dark">The Coder For: Fizz BUzz</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                    //Call Hello World with alert!
-function HelloWorld(){
-    alert("Hello World!");
+                    //get value from user
+function getValues() {
+    document.getElementById("alert").classList.add("invisible");
+
+    let fizzValue = document.getElementById("fizzNumber").value;
+
+
+
+    let buzzValue = document.getElementById("buzzNumber").value;
+
+
+    fizzValue = parseInt(fizzValue);
+
+
+    buzzValue = parseInt(buzzValue);
+
+    if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue))
+
+    {
+
+
+        let fbData = FizzBuzz(fizzValue, buzzValue);
+
+        displayData(fbData);
+
+    } else {
+
+        alert("You must enter integers!");
+
+    }
+
 }
+
+//Traditional Solve Fizz Buzz with a for loop
+function FizzBuzz(value1, value2) {
+
+    let returnArray = []
+
+    for (let i = 1; i <= 100; i++) {
+
+        if (i % value1 == 0 && i % value2 == 0) {
+
+            returnArray.push("FizzBuzz");
+
+        } else if (i % value1 == 0) {
+            returnArray.push("Fizz");
+
+        } else if (i % value2 == 0) {
+
+            returnArray.push("Buzz");
+        } else {
+            returnArray.push(i);
+
+        }
+    }
+
+
+    return returnArray;
+
+}
+
+//custom display function
+function displayData(fbData) {
+    document.getElementById("alert").classList.remove("invisible");
+
+    //get the table body element from the page
+    let tableBody = document.getElementById("resultedNumbers");
+
+    //get the row from the template
+    let templateRow = document.getElementById("fbTemplate");
+
+    //clear table first
+    tableBody.innerHTML = "";
+
+    for (let i = 0; i < fbData.length; i += 5) {
+        const tableRow = document.importNode(templateRow.content, true);
+        //grab only the columns in the template
+        rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(fbData[i]);
+        rowCols[0].textContent = fbData[i];
+
+        rowCols[1].classList.add(fbData[i + 1]);
+        rowCols[1].textContent = fbData[i + 1];
+
+        rowCols[2].classList.add(fbData[i + 2]);
+        rowCols[2].textContent = fbData[i + 2];
+
+        rowCols[3].classList.add(fbData[i + 3]);
+        rowCols[3].textContent = fbData[i + 3];
+
+        rowCols[4].classList.add(fbData[i + 4]);
+        rowCols[4].textContent = fbData[i + 4];
+
+        tableBody.appendChild(tableRow);
+    }
+}
+
                 </code></pre>
             </div>
             <div class="col-lg-4">
-                <p> The Code is structure in one function.</p>
-                <h5>Hello World!</h5> 
-                <p> Hello world is function which displays an alert page page showing alert as hello world!</p>
+                <p class="lead fw-bold"> The Code is structure in three function.</p>
+                <h3 class="border-bottom border-primary">getValues</h3> 
+                <p> The <b>getValues</b> function will get the both Fizz and Buzz value from the page and will convert it into integer and after it, it will check whether the inputted value is integer or not. If not, an alert message will pop up.</p>
+                <h3 class="border-bottom border-primary">fizzBuzz</h3> 
+                <p> The <b>fizzBuzz</b> function will print the number from 1 to 100 and will check if the number is multiple of 3 then it will write it as <b>Fizz</b>, if it's multiple of 5 then it will write <b>Buzz</b> or if it's multiple of both then it will write <b>FizzBuzz</b>.</p>
+                <h3 class="border-bottom border-primary">displayValues</h3> 
+                <p>The <b>displayValues</b>function will display the values in form of row and columns in the table and print it out to the page.</p>
             </div>
         </div>
     </div>

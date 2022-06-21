@@ -70,3 +70,16 @@ white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
 }
+
+.Fizz{
+    color: darkgreen;
+
+}
+.Buzz{
+    color: darkblue;
+}
+
+.FizzBuzz{
+    color: red;
+    font-weight: bold;
+}
